@@ -5,9 +5,9 @@ import com.pm.paymentgateway.model.MasterCard;
 import com.pm.paymentgateway.repository.MasterCardRepository;
 import com.pm.paymentgateway.service.impl.MasterCardServiceImpl;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Test;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -32,8 +32,8 @@ public class MasterCardServiceTest {
     MasterCard masterCard;
 
 
-    @BeforeEach
-    void setUp() throws Exception{
+    @Before
+    public void setUp() throws Exception{
         MockitoAnnotations.initMocks(this);
         masterCard = new MasterCard();
         masterCard.setMasterCardId(Long.valueOf(1));
@@ -45,8 +45,8 @@ public class MasterCardServiceTest {
         masterCard.setPin("043");
     }
 
-    @AfterEach
-    void tearDown() {
+    @After
+    public void tearDown() {
     }
 
 
@@ -60,7 +60,7 @@ public class MasterCardServiceTest {
     }
 
     @Test
-    void findByCcNumber() {
+    public void findByCcNumber() {
 
         when(masterCardRepository.getByCardNumber(anyString())).thenReturn(masterCard);
         MasterCard master= masterCardService.getByCardNumber(masterCard.getCardNumber());
